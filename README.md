@@ -1,3 +1,7 @@
+# Context
+* [rsdlGenerator](#rsdlGenerator)
+* [rsdlCodegen](#rsdlCodegen)
+
 ***
 
 # rsdlGenerator
@@ -26,6 +30,7 @@ To see help:
 $ perl rsdlGenerator.pl -help
 ```
 Default logging level - INFO.
+
 To start verbose logging:
 ```sh
 $ perl rsdlGenerator.pl -v
@@ -149,6 +154,7 @@ To see help:
 $ perl rsdlCodegen.pl -help
 ```
 Default logging level - INFO.
+
 To start verbose logging:
 ```sh
 $ perl rsdlCodegen.pl -v -p=<path_to_RSDL_file>
