@@ -24,6 +24,7 @@ To see available options:
 $ perl RSDLGenerator.pl -help
 ```
 Default logging level - INFO.
+
 To start verbose logging:
 ```sh
 $ perl RSDLGenerator.pl -v
