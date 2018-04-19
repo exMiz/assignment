@@ -2,11 +2,11 @@
 rsdlGenerator - is a program for generating [RSDL](https://en.wikipedia.org/wiki/RSDL) according to api structure.
 
 ## Description
-rsdlGenerator and its modules written in [perl](https://www.perl.org/).
+rsdlGenerator and its component written in [perl](https://www.perl.org/).
 
 File name           | Description
 --------------------|----------------------
-`rsdlGenerator.pl`  | Main script for RSDL creating 
+`rsdlGenerator.pl`  | Main script for creating RSDL 
 `Resource.pm`       | Describes resource of api {name and method_list}
 `ResourceMethod.pm` | Describes resource method with {name, input and output data}  
 `MethodParams.pm`   | Describes method param with {name, type and mandatory}
@@ -24,7 +24,6 @@ To see help:
 $ perl rsdlGenerator.pl -help
 ```
 Default logging level - INFO.
-
 To start verbose logging:
 ```sh
 $ perl rsdlGenerator.pl -v
@@ -123,4 +122,94 @@ Example of generated RSDL Schema file (api_schema.xsd):
   </xs:complexType>
  ...
  </xs:schema> 
+```
+
+# rsdlCodegen
+rsdlCodegen - is a program for generating client file and modules for working with api based on [RSDL](https://en.wikipedia.org/wiki/RSDL).
+
+## Description
+rsdlCodegen and its components written in [perl](https://www.perl.org/).
+
+File name           | Description
+--------------------|----------------------
+`rsdlCodegen.pl`    | Main script for creating client and modules
+`module_template.tt`| Template for module
+`Client_Template.tt`| Template for client
+
+To start program:
+```sh
+$ perl rsdlCodegen.pl -p=<path_to_RSDL_file>
+```
+To see help:
+```sh
+$ perl rsdlCodegen.pl -help
+```
+Default logging level - INFO.
+To start verbose logging:
+```sh
+$ perl rsdlCodegen.pl -v -p=<path_to_RSDL_file>
+```
+## Example
+Example of input RSDL file (api.rsdl):
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<rsdl href="/rsdl" rel="rsdl">
+  <description />
+  <version major="1" minor="1" build="0" revision="0"/>
+  <schema href="/schema" rel="schema">
+    <name>api_schema.xsd</name>
+    <description />
+  </schema>
+  <links>
+    <link rel="get" href="/Users/get_user_id">
+      <request>
+        <http_method>GET</http_method>
+        <headers />
+        <url>
+          <parameters_set>
+            <parameter context="query" type="xs:string" required="false">
+              <name>name</name>
+              <value />
+            </parameter>
+          </parameters_set>
+        </url>
+      </request>
+      <response>
+        <type>GetUserId</type>
+      </response>
+    </link>
+  </links>
+</rsdl>
+```
+Example of genereted module (ApiClasses/Users.pm):
+```perl
+package ApiClasses::Users;
+
+use 5.22.0;
+use strict;
+use warnings;
+use REST::Client;
+
+my $client = REST::Client->new();
+
+sub get_acl_list (;$) {
+    my $name = shift;
+    
+    $client->GET("/Users/get_user_id?name=$name");
+
+    return $client->responseContent();
+}
+
+1;
+```
+Example of genereted client file (client.pl):
+```perl
+#! /usr/bin/perl
+
+use 5.22.0;
+use strict;
+use warnings;
+
+use ApiClasses::Users;
+
 ```
