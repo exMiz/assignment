@@ -1,6 +1,6 @@
 # Content
-* [rsdlGenerator](#rsdlgenerator)
-* [rsdlCodegen](#rsdlcodegen)
+* [rsdlGenerator](#rsdlgenerator) - generate RSDL based on api structure
+* [rsdlCodegen](#rsdlcodegen) - generate client based on RSDL
 
 ***
 
