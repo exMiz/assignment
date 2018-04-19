@@ -1,11 +1,10 @@
-# RGen: RSDL Generator
-> Think different. Generate difference. ```Bohdan Butko```
-
-RGen - is a program for generation [RSDL](https://en.wikipedia.org/wiki/RSDL) according to api structure to your api.
-
-* [Example](#this)
+rsdlGenerator - is a program for generation [RSDL](https://en.wikipedia.org/wiki/RSDL) according to api structure.
 ## Descriptions
-RGen written in [perl](https://www.perl.org/).
+rsdlGenerator written in [perl](https://www.perl.org/).
+To start program:
+```sh
+$ perl RSDLGenerator.pl
+```
 To see available options:
 ```sh
 $ perl RSDLGenerator.pl -help
@@ -47,7 +46,6 @@ $PORTA_SCHEMA = {
                           ]
                 };
 ```
-## This
 Example of generated RSDL file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -76,5 +74,22 @@ Example of generated RSDL file:
   </links>
 </rsdl>
 ```
+Example of generated RSDL Schema file:
+```xml
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-################################################
+  <xs:element name="rsdl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="description"/>
+        <xs:element ref="version"/>
+        <xs:element ref="schema"/>
+        <xs:element ref="links"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="href"/>
+      <xs:attribute type="xs:string" name="rel"/>
+    </xs:complexType>
+  </xs:element>
+ ...
+ </xs:schema> 
+```
