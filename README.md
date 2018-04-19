@@ -47,6 +47,7 @@ $PORTA_SCHEMA = {
                           ]
                 };
 ```
+## This
 Example of generated RSDL file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -75,6 +76,5 @@ Example of generated RSDL file:
   </links>
 </rsdl>
 ```
-## This
 
 ################################################
