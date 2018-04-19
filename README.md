@@ -17,17 +17,16 @@ File name           | Description
 
 To start program:
 ```sh
-$ perl RSDLGenerator.pl
+$ perl rsdlLGenerator.pl
 ```
-To see available options:
+To see help:
 ```sh
-$ perl RSDLGenerator.pl -help
+$ perl rsdlGenerator.pl -help
 ```
 Default logging level - INFO.
-
 To start verbose logging:
 ```sh
-$ perl RSDLGenerator.pl -v
+$ perl rsdlGenerator.pl -v
 ```
 
 ## Example
