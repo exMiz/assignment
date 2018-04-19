@@ -4,10 +4,10 @@
 
 ***
 
-# rsdlGenerator
+## rsdlGenerator
 rsdlGenerator - is a program for generating [RSDL](https://en.wikipedia.org/wiki/RSDL) according to api structure.
 
-## Description
+### Description
 rsdlGenerator and its component written in [perl](https://www.perl.org/).
 
 File name           | Description
@@ -36,7 +36,7 @@ To start verbose logging:
 $ perl rsdlGenerator.pl -v
 ```
 
-## Example
+### Example
 Module PortaSchema contains variable PORTA_SCHEMA that describes api structure.
 ```perl
 $PORTA_SCHEMA = { 
@@ -133,10 +133,10 @@ Example of generated RSDL Schema file (api_schema.xsd):
 
 ***
 
-# rsdlCodegen
+## rsdlCodegen
 rsdlCodegen - is a program for generating client file and modules for working with api based on [RSDL](https://en.wikipedia.org/wiki/RSDL).
 
-## Description
+### Description
 rsdlCodegen and its components written in [perl](https://www.perl.org/).
 
 File name           | Description
@@ -159,7 +159,7 @@ To start verbose logging:
 ```sh
 $ perl rsdlCodegen.pl -v -p=<path_to_RSDL_file>
 ```
-## Example
+### Example
 Example of input RSDL file (api.rsdl):
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
