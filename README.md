@@ -1,6 +1,6 @@
 # Context
-* [rsdlGenerator](#rsdlGenerator)
-* [rsdlCodegen](#rsdlCodegen)
+* [rsdlGenerator](#rsdlgenerator)
+* [rsdlCodegen](#rsdlcodegen)
 
 ***
 
