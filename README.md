@@ -1,3 +1,5 @@
+***
+
 # rsdlGenerator
 rsdlGenerator - is a program for generating [RSDL](https://en.wikipedia.org/wiki/RSDL) according to api structure.
 
@@ -123,7 +125,9 @@ Example of generated RSDL Schema file (api_schema.xsd):
  ...
  </xs:schema> 
 ```
-=========================================================================================
+
+***
+
 # rsdlCodegen
 rsdlCodegen - is a program for generating client file and modules for working with api based on [RSDL](https://en.wikipedia.org/wiki/RSDL).
 
