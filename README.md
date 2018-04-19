@@ -1,8 +1,19 @@
 # rsdlGenerator
+rsdlGenerator - is a program for generating [RSDL](https://en.wikipedia.org/wiki/RSDL) according to api structure.
 
-rsdlGenerator - is a program for generation [RSDL](https://en.wikipedia.org/wiki/RSDL) according to api structure.
-## Descriptions
-rsdlGenerator written in [perl](https://www.perl.org/).
+## Description
+rsdlGenerator and its modules written in [perl](https://www.perl.org/).
+
+File name           | Description
+--------------------|----------------------
+`rsdlGenerator.pl`  | Main script for RSDL creating 
+`Resource.pm`       | Describes resource of api {name and method_list}
+`ResourceMethod.pm` | Describes resource method with {name, input and output data}  
+`MethodParams.pm`   | Describes method param with {name, type and mandatory}
+`PortaSchema.pm`    | Module that contains hash with api structure
+`RSDL.pm`           | Module that contains methods for generating RSDL file and schema
+`RSDL_Template.tt`  | Template for RSDL file
+`RSDL_Schema.tt`    | Template for RSDL Schema
 
 To start program:
 ```sh
@@ -11,6 +22,11 @@ $ perl RSDLGenerator.pl
 To see available options:
 ```sh
 $ perl RSDLGenerator.pl -help
+```
+Default logging level - INFO.
+To start verbose logging:
+```sh
+$ perl RSDLGenerator.pl -v
 ```
 
 ## Example
@@ -49,7 +65,8 @@ $PORTA_SCHEMA = {
                           ]
                 };
 ```
-Example of generated RSDL file:
+
+Example of generated RSDL file (api.rsdl):
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <rsdl href="/rsdl" rel="rsdl">
@@ -60,24 +77,28 @@ Example of generated RSDL file:
     <description />
   </schema>
   <links>
-    <link rel="get" href="/ACL/get_acl_list">
+    <link rel="get" href="/Users/get_user_id">
       <request>
         <http_method>GET</http_method>
         <headers />
         <url>
           <parameters_set>
             <parameter context="query" type="xs:string" required="false">
-              <name>group</name>
+              <name>name</name>
               <value />
             </parameter>
           </parameters_set>
         </url>
       </request>
+      <response>
+        <type>GetUserId</type>
+      </response>
     </link>
   </links>
 </rsdl>
 ```
-Example of generated RSDL Schema file:
+
+Example of generated RSDL Schema file (api_schema.xsd):
 ```xml
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
@@ -93,6 +114,12 @@ Example of generated RSDL Schema file:
       <xs:attribute type="xs:string" name="rel"/>
     </xs:complexType>
   </xs:element>
+ ...
+   <xs:complexType name="GetUserId">
+    <xs:sequence>
+      <xs:element type="xs:int" name="id" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
  ...
  </xs:schema> 
 ```
